@@ -23,7 +23,8 @@ public class Alien : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Bullet"))
         {
-
+            int damage = collision.gameObject.GetComponent<Bullet>().getDamage();
+            hit(damage);
         }
     }
 
