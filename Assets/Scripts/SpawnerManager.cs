@@ -54,10 +54,12 @@ public class SpawnerManager : MonoBehaviour
         {
             if (!aliens[i].gameObject.activeSelf)
             {
-                aliens[i].gameObject.SetActive(true);
                 Spawner randomSpawner = getRandomSpawner();
-
-                aliens[i].transform.position = randomSpawner.transform.position;
+                if (randomSpawner)
+                {
+                    aliens[i].gameObject.SetActive(true);
+                    aliens[i].transform.position = randomSpawner.transform.position;
+                }
                 return;
             }
         }
