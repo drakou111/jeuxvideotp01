@@ -33,7 +33,17 @@ public class Alien : MonoBehaviour
   {
     if (this.health <= 0 && gameObject.active)
     {
-      gameObject.SetActive(false);
+      if (collision.gameObject.CompareTag("Player"))
+      {
+        this.health = 0;
+        collision.gameObject.GetComponent<Player>().hit(damage);
+      }
+
+      if (collision.gameObject.CompareTag("Bullet"))
+      {
+        int damage = collision.gameObject.GetComponent<Bullet>().getDamage();
+        hit(damage);
+      }
     }
   }
 
