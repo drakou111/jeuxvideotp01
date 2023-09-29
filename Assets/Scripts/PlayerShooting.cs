@@ -13,7 +13,7 @@ public class PlayerShooting : MonoBehaviour
   private GameObject[] bullets = new GameObject[bulletCount];
 
   [SerializeField]
-  private UnityEvent launchHitEvent;
+  private UnityEvent shootEvent;
 
   // Start is called before the first frame update
   void Start()
@@ -30,7 +30,19 @@ public class PlayerShooting : MonoBehaviour
   {
     if (Input.GetButtonDown("Fire1"))
     {
+      Shoot();
+    }
+  }
 
+  void Shoot()
+  {
+    for (int i = 0; i < bulletCount; i++)
+    {
+      if (!bullets[i].activeSelf)
+      {
+        bullets[i].SetActive(true);
+        return;
+      }
     }
   }
 }
