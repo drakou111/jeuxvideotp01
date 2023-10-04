@@ -9,6 +9,7 @@ public class SpawnerManager : MonoBehaviour
 {
     [SerializeField] private Spawner spawner;
     [SerializeField] private Alien alien;
+    [SerializeField] private GameObject goal;
     private static int spawnerNumber = 8;
     private static int alienNumber = 20;
 
@@ -37,6 +38,7 @@ public class SpawnerManager : MonoBehaviour
         {
             aliens[i] = Instantiate(alien);
             aliens[i].gameObject.SetActive(false);
+            aliens[i].gameObject.GetComponent<AlienMovement>().goal = goal;
         }
 
     }
