@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 6615366640298528591}
   - component: {fileID: 6115658399633627219}
   - component: {fileID: 4350378397028778335}
-  - component: {fileID: 2352216086304317805}
+  - component: {fileID: 176188632425722646}
   m_Layer: 0
   m_Name: Alien
   m_TagString: Untagged
@@ -232,6 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d154e19bc2e7c04da97e27fc82dfde5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goal: {fileID: 0}
 --- !u!195 &6115658399633627219
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -281,8 +282,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &2352216086304317805
-BoxCollider:
+--- !u!135 &176188632425722646
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -300,8 +301,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4, y: 6, z: 5}
-  m_Center: {x: 0, y: 0.7, z: 0.8}
+  m_Radius: 3
+  m_Center: {x: 0, y: 0.6, z: 0}
 --- !u!1 &616056485579276216
 GameObject:
   m_ObjectHideFlags: 0

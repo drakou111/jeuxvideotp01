@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Alien : MonoBehaviour
 {
+    [SerializeField] int initialHealth = 2;
     [SerializeField] int health = 2;
     [SerializeField] int damage = 1;
 
@@ -35,7 +36,7 @@ public class Alien : MonoBehaviour
     {
         if (this.health <= 0 && gameObject.activeSelf)
         {
-            this.health = 0;
+            this.health = this.initialHealth;
             gameObject.SetActive(false);
         }
     }

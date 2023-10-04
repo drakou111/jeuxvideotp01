@@ -3,24 +3,34 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class SpawnerManager : MonoBehaviour
 {
-    [SerializeField] Spawner spawner;
-    [SerializeField] Alien alien;
+    [SerializeField] private Spawner spawner;
+    [SerializeField] private Alien alien;
     private static int spawnerNumber = 8;
     private static int alienNumber = 20;
 
     private Spawner[] spawners = new Spawner[spawnerNumber];
     private Alien[] aliens = new Alien[alienNumber];
 
+    [SerializeField] private Vector3 center;
+    [SerializeField] private float radius;
+
+    [SerializeField] private float initialTime = 2;
+    [SerializeField] private float timer = 0;
+
     // Start is called before the first frame update
     void Start()
     {
+        float angleOffset = ((Mathf.PI * 2) / spawnerNumber) / 2;
         for (int i = 0; i < spawnerNumber; i++)
         {
             spawners[i] = Instantiate(spawner);
-            spawners[i].gameObject.SetActive(false);
+            float angle = (Mathf.PI * 2) / spawnerNumber + angleOffset;
+            spawners[i].transform.position = new Vector3(center.x + (radius * Mathf.Cos(angle * i)), center.y, center.z + (radius * Mathf.Sin(angle * i)));
+            spawners[i].gameObject.SetActive(true);
         }
 
         for (int i = 0; i < alienNumber; i++)
@@ -34,7 +44,11 @@ public class SpawnerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        timer += Time.deltaTime;
+        if (timer >= initialTime) {
+            timer = 0;
+            spawnAlien();
+        }
     }
 
     private void spawnSpawner()
