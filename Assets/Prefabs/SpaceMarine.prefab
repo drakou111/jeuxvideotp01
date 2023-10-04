@@ -2629,9 +2629,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7198602683646946317}
-  - component: {fileID: -3880826910188034086}
-  - component: {fileID: -1320836300205342116}
-  - component: {fileID: -3925906394159999356}
   m_Layer: 0
   m_Name: SpaceMarine
   m_TagString: Untagged
@@ -2656,47 +2653,6 @@ Transform:
   - {fileID: 1323836180460017622}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-3880826910188034086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4890595402546638730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89b92025a5179794abe071f058d43cc1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 20
---- !u!114 &-1320836300205342116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4890595402546638730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b6a99530128aee40a69ad98a5e92927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &-3925906394159999356
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4890595402546638730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06059da46a0b73c459f88fc7a1c64e3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 9106597129761083039, guid: 4e54a533cf6dea74ab9c118b0f887d4e, type: 3}
-  shootEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &5437076874610720366
 GameObject:
   m_ObjectHideFlags: 0

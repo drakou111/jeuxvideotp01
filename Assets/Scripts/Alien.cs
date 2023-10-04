@@ -15,22 +15,6 @@ public class Alien : MonoBehaviour
 
   private void OnCollisionEnter(Collision collision)
   {
-    if (collision.gameObject.CompareTag("Player"))
-    {
-      this.health = 0;
-      collision.gameObject.GetComponent<Player>().hit(damage);
-    }
-
-    if (collision.gameObject.CompareTag("Bullet"))
-    {
-
-    }
-  }
-
-
-  // Update is called once per frame
-  void Update()
-  {
     if (this.health <= 0 && gameObject.active)
     {
       if (collision.gameObject.CompareTag("Player"))
@@ -45,6 +29,13 @@ public class Alien : MonoBehaviour
         hit(damage);
       }
     }
+  }
+
+
+  // Update is called once per frame
+  void Update()
+  {
+    
   }
 
   void hit(int health)
