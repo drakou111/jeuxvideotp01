@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-  [SerializeField] Player damage;
+  [SerializeField] Player player;
   private void OnEnable()
   {
 

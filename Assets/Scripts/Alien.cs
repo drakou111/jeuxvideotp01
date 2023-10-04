@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Alien : MonoBehaviour
 {
+  [SerializeField] int initialHealth = 2;
   [SerializeField] int health = 2;
   [SerializeField] int damage = 1;
 
@@ -27,15 +28,14 @@ public class Alien : MonoBehaviour
       {
         int damage = collision.gameObject.GetComponent<Bullet>().getDamage();
         hit(damage);
+        //TODO: disable bullet
       }
     }
   }
-
-
   // Update is called once per frame
   void Update()
   {
-    
+
   }
 
   void hit(int health)
@@ -43,7 +43,11 @@ public class Alien : MonoBehaviour
     this.health -= health;
     if (this.health < 0)
     {
-      this.health = 0;
+      if (this.health <= 0 && gameObject.activeSelf)
+      {
+        this.health = this.initialHealth;
+        gameObject.SetActive(false);
+      }
     }
   }
 }
