@@ -7,7 +7,6 @@ public class AlienMovement : MonoBehaviour
 {
     [SerializeField] public GameObject goal;
     private NavMeshAgent navMeshAgent;
-    private bool onGround = false;
 
     // Start is called before the first frame update
     void Start()
@@ -18,21 +17,14 @@ public class AlienMovement : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Floor")) {
-            onGround = true;
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Floor")) {
-            onGround = false;
+            navMeshAgent.enabled = true;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (onGround && navMeshAgent)
+        if (navMeshAgent && navMeshAgent.enabled)
             navMeshAgent.destination = goal.transform.position;
     }
 }
