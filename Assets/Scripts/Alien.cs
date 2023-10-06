@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Alien : MonoBehaviour
 {
+    [SerializeField] private const float crushVelocityThreshold = -1;
     [SerializeField] int initialHealth = 2;
     [SerializeField] int health = 2;
     [SerializeField] int damage = 1;
@@ -20,7 +21,10 @@ public class Alien : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             this.health = 0;
-            collision.gameObject.GetComponent<Player>().hit(damage);
+            if (collision.gameObject.GetComponent<Rigidbody>().velocity.y >= crushVelocityThreshold)
+            {
+                collision.gameObject.GetComponent<Player>().hit(damage);
+            }
             deactivateIfDead();
         }
 
