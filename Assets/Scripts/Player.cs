@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
 
   public void hit(int health)
   {
-    this.health = health;
+    this.health -= health;
     if (this.health < 0)
     {
       this.health = 0;
