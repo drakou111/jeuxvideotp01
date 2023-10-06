@@ -221,6 +221,22 @@ MonoBehaviour:
   initialHealth: 2
   health: 2
   damage: 1
+  trySpawnCollectibleEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3209156504065564953, guid: 69dd07a7b13aca24e9c5280b795d5603,
+          type: 3}
+        m_TargetAssemblyTypeName: CollectibleManager, Assembly-CSharp
+        m_MethodName: trySpawnCollectible
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6615366640298528591
 MonoBehaviour:
   m_ObjectHideFlags: 0

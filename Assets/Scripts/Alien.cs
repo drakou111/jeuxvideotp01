@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Alien : MonoBehaviour
 {
@@ -9,10 +10,12 @@ public class Alien : MonoBehaviour
     [SerializeField] int health = 2;
     [SerializeField] int damage = 1;
 
+    [SerializeField] UnityEvent<Vector3> trySpawnCollectibleEvent;
+
     // Start is called before the first frame update
     void Start()
     {
-
+       
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -45,6 +48,7 @@ public class Alien : MonoBehaviour
         {
             this.health = this.initialHealth;
             gameObject.SetActive(false);
+            trySpawnCollectibleEvent.Invoke(transform.position);
         }
     }
 
