@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CollectibleManager : MonoBehaviour
 {
+    [SerializeField] public GameManager gameManager;
+
     [SerializeField] private HealthCollectible healthC;
     [SerializeField] private MissileCollectible missileC;
     [SerializeField] private MultiShotCollectible multishotC;
@@ -43,6 +45,8 @@ public class CollectibleManager : MonoBehaviour
             {
                 healthCs[i].transform.position = position;
                 healthCs[i].gameObject.SetActive(true);
+                healthCs[i].soundManager = this.gameManager.soundManager;
+                healthCs[i].GetComponent<AudioSource>().PlayOneShot(gameManager.soundManager.powerupAppear);
                 return;
             }
         }
@@ -55,6 +59,8 @@ public class CollectibleManager : MonoBehaviour
             {
                 missileCs[i].transform.position = position;
                 missileCs[i].gameObject.SetActive(true);
+                missileCs[i].soundManager = this.gameManager.soundManager;
+                missileCs[i].GetComponent<AudioSource>().PlayOneShot(gameManager.soundManager.powerupAppear);
                 return;
             }
         }
@@ -67,6 +73,8 @@ public class CollectibleManager : MonoBehaviour
             {
                 multishotCs[i].transform.position = position;
                 multishotCs[i].gameObject.SetActive(true);
+                multishotCs[i].soundManager = this.gameManager.soundManager;
+                multishotCs[i].GetComponent<AudioSource>().PlayOneShot(gameManager.soundManager.powerupAppear);
                 return;
             }
         }

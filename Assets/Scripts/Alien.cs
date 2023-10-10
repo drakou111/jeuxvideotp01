@@ -11,11 +11,12 @@ public class Alien : MonoBehaviour
     [SerializeField] int damage = 1;
 
     [SerializeField] public CollectibleManager collectibleManager;
+    private AudioSource source;
 
     // Start is called before the first frame update
     void Start()
     {
-       
+       this.source = GetComponent<AudioSource>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -48,7 +49,11 @@ public class Alien : MonoBehaviour
         {
             this.health = this.initialHealth;
             gameObject.SetActive(false);
-            if (collectibleManager) collectibleManager.trySpawnCollectible(transform.position);
+            if (collectibleManager)
+            {
+                source.PlayOneShot(collectibleManager.gameManager.soundManager.alienDeath);
+                collectibleManager.trySpawnCollectible(transform.position);
+            }
         }
     }
 

@@ -5,9 +5,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] public SoundManager soundManager;
+
     [SerializeField] private TMP_Text heartText;
     [SerializeField] private TMP_Text missileText;
     [SerializeField] private TMP_Text multiShotText;
+
+    [SerializeField] private Player player;
+    private AudioSource playerAudioSource;
 
     [SerializeField] int health = 20;
     [SerializeField] int missiles = 0;
@@ -16,6 +21,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        playerAudioSource = player.GetComponent<AudioSource>();
         updateHud();
     }
 
@@ -24,7 +30,12 @@ public class GameManager : MonoBehaviour
         this.health = Mathf.Max(0, this.health - health);
         if (this.health == 0)
         {
+
             //TODO: End game
+            playerAudioSource.PlayOneShot(soundManager.marineDeath);
+        }
+        else {
+            playerAudioSource.PlayOneShot(soundManager.marineHurt);
         }
         updateHud();
     }
