@@ -34,7 +34,6 @@ public class CollectibleManager : MonoBehaviour
             multishotCs[i] = Instantiate(multishotC);
             multishotCs[i].gameObject.SetActive(false);
         }
-
     }
 
     void spawnHealthCollectible(Vector3 position) {
@@ -88,6 +87,7 @@ public class CollectibleManager : MonoBehaviour
 
     public void trySpawnCollectible(Vector3 position)
     {
+
         float random = Random.Range(0f, 1f);
         if (random <= spawnCollectibleOdds) {
             spawnRandomCollectible(position);

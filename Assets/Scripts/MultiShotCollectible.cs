@@ -2,17 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MultiShotCollectible : Collectible
+public class MultiShotCollectible : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private int multiShotAmount = 10;
     void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+
+    }
+
+    private void OnTriggerEnter(Collider collidier)
+    {
+        if (collidier.gameObject.CompareTag("Player"))
+        {
+            collidier.gameObject.GetComponent<Player>().addMultiShot(multiShotAmount);
+            gameObject.SetActive(false);
+        }
     }
 }

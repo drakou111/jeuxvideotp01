@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Collectible : MonoBehaviour
 {
-    [SerializeField] private float spinSpeed = 10f;
+    [SerializeField] private float spinSpeed = 50f;
     // Start is called before the first frame update
     void Start()
     {

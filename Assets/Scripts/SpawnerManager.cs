@@ -7,6 +7,8 @@ using UnityEngine.UIElements;
 
 public class SpawnerManager : MonoBehaviour
 {
+    [SerializeField] private CollectibleManager collectibleManager;
+
     [SerializeField] private Spawner spawner;
     [SerializeField] private Alien alien;
     [SerializeField] private GameObject goal;
@@ -41,6 +43,7 @@ public class SpawnerManager : MonoBehaviour
             aliens[i] = Instantiate(alien);
             aliens[i].gameObject.SetActive(false);
             aliens[i].gameObject.GetComponent<AlienMovement>().goal = goal;
+            aliens[i].gameObject.GetComponent<Alien>().collectibleManager = collectibleManager;
         }
 
     }

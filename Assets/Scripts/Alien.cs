@@ -10,7 +10,7 @@ public class Alien : MonoBehaviour
     [SerializeField] int health = 2;
     [SerializeField] int damage = 1;
 
-    [SerializeField] UnityEvent<Vector3> trySpawnCollectibleEvent;
+    [SerializeField] public CollectibleManager collectibleManager;
 
     // Start is called before the first frame update
     void Start()
@@ -48,7 +48,7 @@ public class Alien : MonoBehaviour
         {
             this.health = this.initialHealth;
             gameObject.SetActive(false);
-            trySpawnCollectibleEvent.Invoke(transform.position);
+            if (collectibleManager) collectibleManager.trySpawnCollectible(transform.position);
         }
     }
 

@@ -5,22 +5,35 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private GameManager manager;
-  [SerializeField] float speed = 20;
+    [SerializeField] float speed = 20;
 
-  // Start is called before the first frame update
-  void Start()
-  {
+    // Start is called before the first frame update
+    void Start()
+    {
 
-  }
+    }
 
-  // Update is called once per frame
-  void Update()
-  {
+    // Update is called once per frame
+    void Update()
+    {
 
-  }
+    }
 
-  public void hit(int health)
-  {
+    public void hit(int health)
+    {
         manager.hit(health);
-  }
+    }
+
+    public void heal(int health)
+    {
+        manager.heal(health);
+    }
+
+    public void addMissile(int amount) {
+        manager.addMissile(amount);
+    }
+
+    public void addMultiShot(int amount) {
+        manager.addMultiShot(amount);
+    }
 }

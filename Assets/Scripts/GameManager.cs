@@ -10,10 +10,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text multiShotText;
 
     [SerializeField] int health = 20;
-    [SerializeField] int missileCooldown = 0;
-    [SerializeField] int multiShotCooldown = 0;
+    [SerializeField] int missiles = 0;
+    [SerializeField] float multiShotCooldown = 0;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         updateHud();
@@ -21,24 +21,41 @@ public class GameManager : MonoBehaviour
 
     public void hit(int health)
     {
-        this.health -= health;
-        if (this.health < 0)
+        this.health = Mathf.Max(0, this.health - health);
+        if (this.health == 0)
         {
-            this.health = 0;
-            //TODO
+            //TODO: End game
         }
+        updateHud();
+    }
+
+    public void heal(int health) {
+        this.health += health;
+        updateHud();
+    }
+
+    public void addMissile(int amount) { 
+        this.missiles += amount;
+        updateHud();
+    }
+
+    public void addMultiShot(int amount) { 
+        this.multiShotCooldown += amount;
         updateHud();
     }
 
     void updateHud() { 
         this.heartText.text = health.ToString();
-        this.missileText.text = missileCooldown.ToString();
-        this.multiShotText.text = multiShotCooldown.ToString();
+        this.missileText.text = missiles.ToString();
+        this.multiShotText.text = Mathf.Ceil(multiShotCooldown).ToString();
     }
 
-    // Update is called once per frame
     void Update()
-    {
-
+    { 
+        if (multiShotCooldown > 0)
+        {
+            multiShotCooldown = Mathf.Max(0, multiShotCooldown - Time.deltaTime);
+            updateHud();
+        }
     }
 }
