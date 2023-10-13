@@ -31,7 +31,7 @@ public class Bullet : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    transform.Translate(speed * Mathf.Cos(transform.rotation.x)*Time.deltaTime, 0, speed * Mathf.Sin(transform.rotation.z) * Time.deltaTime);
+    transform.Translate(0, 0, speed * Time.deltaTime);
     bulletTimer += Time.deltaTime;
     if (bulletTimer > bulletCooldown)
     {

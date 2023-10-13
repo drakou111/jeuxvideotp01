@@ -12,7 +12,7 @@ public class PlayerShooting : MonoBehaviour
   [SerializeField] GameObject bullet;
   [SerializeField] GameObject gun;
   [SerializeField] float shootCooldown;
-  [SerializeField] float shootTimer;
+  float shootTimer = 0;
   private static int bulletCount = 50;
 
   private List<GameObject> bullets = new List<GameObject>();
@@ -31,9 +31,9 @@ public class PlayerShooting : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
+    shootTimer += Time.deltaTime;
     if (Input.GetButtonDown("Fire1"))
     {
-      shootTimer += Time.deltaTime;
       if (shootTimer >= shootCooldown)
       {
         shootTimer = 0;
@@ -52,15 +52,16 @@ public class PlayerShooting : MonoBehaviour
         return;
       }
     }
-    GameObject currentBullet = Instantiate(bullet);
-    bullets.Add(currentBullet);
-    currentBullet.SetActive(false);
+    GameObject newBullet = Instantiate(bullet);
+    bullets.Add(newBullet);
+    newBullet.SetActive(false);
+    FireBullet(newBullet);
   }
-  void FireBullet(GameObject iBullet)
+  void FireBullet(GameObject bullet)
   {
-    iBullet.SetActive(true);
-    iBullet.transform.position = gun.transform.position;
-    iBullet.transform.rotation = new Quaternion(gun.transform.rotation.x, 0, gun.transform.rotation.z + MathF.PI / 2, 0);
+    bullet.SetActive(true);
+    bullet.transform.position = gun.transform.position;
+    bullet.transform.rotation = transform.rotation;
   }
 
 }

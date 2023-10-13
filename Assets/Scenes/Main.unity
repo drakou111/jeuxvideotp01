@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -174,6 +174,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13a3dfe0549c9bf4495d592a0b66034d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  multiShotAmount: 10
+  soundManager: {fileID: 0}
 --- !u!4 &140555363
 Transform:
   m_ObjectHideFlags: 0
@@ -581,7 +583,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 282840810}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2723272, y: -0.000000016556061, z: 0.000000004685766, w: 0.9622047}
+  m_LocalRotation: {x: 0.2723272, y: 0.000000016556063, z: -0.000000004685767, w: 0.9622047}
   m_LocalPosition: {x: 0, y: -37.120003, z: -47.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -702,11 +704,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f12d7f419fa81e949a1004e57514a0a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundManager: {fileID: 0}
   heartText: {fileID: 1539869148}
   missileText: {fileID: 616842549}
   multiShotText: {fileID: 1008557816}
+  player: {fileID: 0}
   health: 20
-  missileCooldown: 0
+  missiles: 0
   multiShotCooldown: 0
 --- !u!4 &293050179
 Transform:
@@ -1075,6 +1079,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2903c98264845f44fb473a7506793aa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthAmount: 3
+  soundManager: {fileID: 0}
 --- !u!4 &708898008
 Transform:
   m_ObjectHideFlags: 0
@@ -1351,6 +1357,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e26729260871064bbd41f1099503008, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  missileAmount: 5
+  soundManager: {fileID: 0}
 --- !u!4 &762317770
 Transform:
   m_ObjectHideFlags: 0
@@ -1589,7 +1597,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 878987650}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.25482658, y: -0.000000018602229, z: 0.000000004902179, w: 0.9669868}
+  m_LocalRotation: {x: 0.25482658, y: 0.00000001860223, z: -0.0000000049021796, w: 0.9669868}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2239,7 +2247,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1486386176}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.28978413, y: 0.000000016468093, z: -0.0000000049861373, w: 0.95709205}
+  m_LocalRotation: {x: 0.28978413, y: -0.00000001646809, z: 0.000000004986136, w: 0.95709205}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2288,6 +2296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d133dcb0faccdae4fbaba84ec018dfe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collectibleManager: {fileID: 0}
   spawner: {fileID: 4693765372648933115, guid: 67c7deb984c2374459fde3e8b8a8b83c, type: 3}
   alien: {fileID: 7645522819821284463, guid: ebdb77b9bebedbe6eb0742bed57d3ddc, type: 3}
   goal: {fileID: 32788139}
@@ -2588,7 +2597,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1656857545}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2723272, y: -0.000000016556061, z: 0.000000004685766, w: 0.96220475}
+  m_LocalRotation: {x: 0.2723272, y: 0.000000016556063, z: -0.0000000046857664, w: 0.96220475}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
