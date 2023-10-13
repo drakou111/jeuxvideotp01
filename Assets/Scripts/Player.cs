@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-  [SerializeField] int health = 20;
+  [SerializeField] private GameManager manager;
   [SerializeField] float speed = 20;
 
   // Start is called before the first frame update
@@ -16,15 +16,27 @@ public class Player : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    
+
   }
 
   public void hit(int health)
   {
-    this.health = health;
-    if (this.health < 0)
-    {
-      this.health = 0;
-    }
+    manager.hit(health);
   }
+
+  public void heal(int health)
+  {
+    manager.heal(health);
+  }
+
+  public void addMissile(int amount)
+  {
+    manager.addMissile(amount);
+  }
+
+  public void addMultiShot(int amount)
+  {
+    manager.addMultiShot(amount);
+  }
+
 }

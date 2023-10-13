@@ -7,11 +7,15 @@ using UnityEngine.UIElements;
 
 public class SpawnerManager : MonoBehaviour
 {
+    [SerializeField] private CollectibleManager collectibleManager;
+
     [SerializeField] private Spawner spawner;
     [SerializeField] private Alien alien;
     [SerializeField] private GameObject goal;
-    private static int spawnerNumber = 8;
-    private static int alienNumber = 20;
+    [SerializeField] private static int spawnerNumber = 8;
+    [SerializeField] private static int alienNumber = 20;
+    [SerializeField] private static int maxTotalAlienNumber = 500;
+    private int alienCount = 0;
 
     private Spawner[] spawners = new Spawner[spawnerNumber];
     private Alien[] aliens = new Alien[alienNumber];
@@ -39,6 +43,7 @@ public class SpawnerManager : MonoBehaviour
             aliens[i] = Instantiate(alien);
             aliens[i].gameObject.SetActive(false);
             aliens[i].gameObject.GetComponent<AlienMovement>().goal = goal;
+            aliens[i].gameObject.GetComponent<Alien>().collectibleManager = collectibleManager;
         }
 
     }
@@ -66,19 +71,23 @@ public class SpawnerManager : MonoBehaviour
     }
 
     private void spawnAlien() {
-        for (int i = 0; i < alienNumber; i++)
+        if (alienCount < maxTotalAlienNumber)
         {
-            if (!aliens[i].gameObject.activeSelf)
+            for (int i = 0; i < alienNumber; i++)
             {
-                Spawner randomSpawner = getRandomSpawner();
-                if (randomSpawner)
+                if (!aliens[i].gameObject.activeSelf)
                 {
-                    aliens[i].gameObject.SetActive(true);
-                    aliens[i].transform.position = randomSpawner.transform.position;
+                    Spawner randomSpawner = getRandomSpawner();
+                    if (randomSpawner)
+                    {
+                        aliens[i].gameObject.SetActive(true);
+                        aliens[i].transform.position = randomSpawner.transform.position;
+                    }
+                    return;
                 }
-                return;
             }
         }
+        alienCount++;
     }
 
     private Spawner getRandomSpawner()
