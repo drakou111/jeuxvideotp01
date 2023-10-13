@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Windows;
@@ -8,20 +10,21 @@ using Input = UnityEngine.Input;
 public class PlayerShooting : MonoBehaviour
 {
   [SerializeField] GameObject bullet;
-  private static int bulletCount = 15;
-  
-  private GameObject[] bullets = new GameObject[bulletCount];
+  [SerializeField] GameObject gun;
+  [SerializeField] float shootCooldown;
+  [SerializeField] float shootTimer;
+  private static int bulletCount = 50;
 
-  [SerializeField]
-  private UnityEvent shootEvent;
+  private List<GameObject> bullets = new List<GameObject>();
 
   // Start is called before the first frame update
   void Start()
   {
     for (int i = 0; i < bulletCount; i++)
     {
-      bullets[i] = Instantiate(bullet);
-      bullets[i].SetActive(false);
+      GameObject currentBullet = Instantiate(bullet);
+      bullets.Add(currentBullet);
+      currentBullet.SetActive(false);
     }
   }
 
@@ -30,19 +33,34 @@ public class PlayerShooting : MonoBehaviour
   {
     if (Input.GetButtonDown("Fire1"))
     {
-      Shoot();
+      shootTimer += Time.deltaTime;
+      if (shootTimer >= shootCooldown)
+      {
+        shootTimer = 0;
+        Shoot();
+      }
     }
   }
 
   void Shoot()
   {
-    for (int i = 0; i < bulletCount; i++)
+    foreach (GameObject iBullet in bullets)
     {
-      if (!bullets[i].activeSelf)
+      if (!iBullet.activeSelf)
       {
-        bullets[i].SetActive(true);
+        FireBullet(iBullet);
         return;
       }
     }
+    GameObject currentBullet = Instantiate(bullet);
+    bullets.Add(currentBullet);
+    currentBullet.SetActive(false);
   }
+  void FireBullet(GameObject iBullet)
+  {
+    iBullet.SetActive(true);
+    iBullet.transform.position = gun.transform.position;
+    iBullet.transform.rotation = new Quaternion(gun.transform.rotation.x, 0, gun.transform.rotation.z + MathF.PI / 2, 0);
+  }
+
 }
