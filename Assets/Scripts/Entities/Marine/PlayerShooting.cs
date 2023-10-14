@@ -49,7 +49,7 @@ public class PlayerShooting : MonoBehaviour
   void Update()
   {
     shootTimer += Time.deltaTime;
-    if (Input.GetButton("Fire1"))
+    if (((Input.GetJoystickNames().Length == 0 || Input.GetJoystickNames()[0] == "") && Input.GetButton("Fire1")) || (Input.GetJoystickNames().Length >= 1 && Input.GetButton("Fire1J")))
     {
       if (shootTimer >= shootCooldown)
       {
@@ -57,7 +57,7 @@ public class PlayerShooting : MonoBehaviour
         Shoot();
       }
     }
-    else if (Input.GetButtonDown("Fire2"))
+    else if (((Input.GetJoystickNames().Length == 0 || Input.GetJoystickNames()[0] == "") && Input.GetButton("Fire2")) || (Input.GetJoystickNames().Length >= 1 && Input.GetButton("Fire2J")))
     {
       if (gameManager.missiles != 0)
       {
