@@ -4,13 +4,36 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] public SpawnerManager spawnerManager;
+    [SerializeField] private int health = 20;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.gameObject.CompareTag("Bullet"))
+        {
+            hit(collider.gameObject.GetComponent<Bullet>().getDamage());
+            collider.gameObject.SetActive(false);
+        } 
+        else if (collider.gameObject.CompareTag("Missile"))
+        {
+            collider.gameObject.SetActive(false);
+            hit(collider.gameObject.GetComponent<Bullet>().getDamage());
+            spawnerManager.checkExplosion(transform.position, collider.gameObject.GetComponent<Bullet>().getDamage());
+        }
+    }
+
+    private void hit(int damage) {
+        this.health -= damage;
+        if (this.health <= 0) {
+            this.gameObject.SetActive(false);
+        }
+    }
+
     void Update()
     {
         

@@ -22,7 +22,7 @@ public class MultiShotCollectible : MonoBehaviour
   {
     if (collidier.gameObject.CompareTag("Player"))
     {
-      collidier.gameObject.GetComponent<PlayerShooting>().addMultiShot(multiShotAmount);
+      collidier.gameObject.GetComponent<Player>().addMultiShot(multiShotAmount);
       //source.PlayOneShot(soundManager.powerupPickup);
       gameObject.SetActive(false);
     }

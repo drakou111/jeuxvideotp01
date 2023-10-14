@@ -16,10 +16,9 @@ public class PlayerMovement : MonoBehaviour
   private float rotationTime = 0.1f;
   private float rotationSpeed;
 
-  private float gravity = 9.81f;
-  private float jumpSpeed = 6f;
+  [SerializeField] private float gravity = 9.81f;
+  [SerializeField] private float jumpSpeed = 6f;
   private float vecticalMovement = 0f;
-  private bool doubleJump = false;
 
   float horizontal, vertical, targetAngle, angle, tempSpeed, originalMovementMagnitude;
 
@@ -69,18 +68,13 @@ public class PlayerMovement : MonoBehaviour
 
   private void BuildVerticalMovement()
   {
-    if (characterController.isGrounded)
-      doubleJump = true;
-    else
+    if (!characterController.isGrounded)
       vecticalMovement -= gravity * Time.deltaTime;
 
     if (Input.GetButtonDown("Jump"))
     {
-      if (characterController.isGrounded || doubleJump)
+      if (characterController.isGrounded)
         vecticalMovement = jumpSpeed;
-
-      if (!characterController.isGrounded && doubleJump)
-        doubleJump = false;
     }
 
     direction.y = vecticalMovement * Time.deltaTime;

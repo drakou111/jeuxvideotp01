@@ -42,7 +42,7 @@ public class Alien : MonoBehaviour
     if (collision.gameObject.CompareTag("Missile"))
     {
       collision.gameObject.SetActive(false);
-      spawnManager.checkExplosion(transform.position);
+      spawnManager.checkExplosion(transform.position, collision.gameObject.GetComponent<Bullet>().getDamage());
       deactivate();
     }
   }
@@ -61,7 +61,7 @@ public class Alien : MonoBehaviour
     }
   }
 
-  void hit(int damage)
+  public void hit(int damage)
   {
     this.health -= damage;
     if (this.health <= 0 && gameObject.activeSelf)
