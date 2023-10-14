@@ -7,18 +7,10 @@ public class Collectible : MonoBehaviour
     [SerializeField] private float spinSpeed = 50f;
     [SerializeField] private float defaultLifeTime = 15;
     [SerializeField] private float lifeTime = 0;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     private void OnEnable()
     {
         this.lifeTime = 0;
     }
-
-    // Update is called once per frame
     void Update()
     {
         spin();

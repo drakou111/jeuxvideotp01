@@ -51,7 +51,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missileAmount: 5
   player: {fileID: 0}
-  soundManager: {fileID: 0}
 --- !u!114 &8117276690947937187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,6 +64,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spinSpeed: 50
+  defaultLifeTime: 15
+  lifeTime: 0
 --- !u!33 &8286444628599587055
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -147,7 +148,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

@@ -5,6 +5,7 @@ using UnityEngine;
 public class CollectibleManager : MonoBehaviour
 {
   [SerializeField] public GameManager gameManager;
+  [SerializeField] private SoundManager soundManager;
 
   [SerializeField] private HealthCollectible healthC;
   [SerializeField] private MissileCollectible missileC;
@@ -24,16 +25,19 @@ public class CollectibleManager : MonoBehaviour
     for (int i = 0; i < healthCollectibleNumber; i++)
     {
       healthCs[i] = Instantiate(healthC);
+      healthCs[i].setSoundManager(soundManager);
       healthCs[i].gameObject.SetActive(false);
     }
     for (int i = 0; i < missileCollectibleNumber; i++)
     {
       missileCs[i] = Instantiate(missileC);
+      missileCs[i].setSoundManager(soundManager);
       missileCs[i].gameObject.SetActive(false);
     }
     for (int i = 0; i < multishotCollectibleNumber; i++)
     {
       multishotCs[i] = Instantiate(multishotC);
+      multishotCs[i].setSoundManager(soundManager);
       multishotCs[i].gameObject.SetActive(false);
     }
   }
@@ -46,8 +50,7 @@ public class CollectibleManager : MonoBehaviour
       {
         healthCs[i].transform.position = position;
         healthCs[i].gameObject.SetActive(true);
-        healthCs[i].soundManager = this.gameManager.soundManager;
-        healthCs[i].GetComponent<AudioSource>().PlayOneShot(gameManager.soundManager.powerupAppear);
+        healthCs[i].GetComponent<AudioSource>().PlayOneShot(soundManager.powerupAppearClip);
         return;
       }
     }
@@ -60,8 +63,7 @@ public class CollectibleManager : MonoBehaviour
       {
         missileCs[i].transform.position = position;
         missileCs[i].gameObject.SetActive(true);
-        missileCs[i].soundManager = this.gameManager.soundManager;
-        missileCs[i].GetComponent<AudioSource>().PlayOneShot(gameManager.soundManager.powerupAppear);
+        missileCs[i].GetComponent<AudioSource>().PlayOneShot(soundManager.powerupAppearClip);
         return;
       }
     }
@@ -74,8 +76,7 @@ public class CollectibleManager : MonoBehaviour
       {
         multishotCs[i].transform.position = position;
         multishotCs[i].gameObject.SetActive(true);
-        multishotCs[i].soundManager = this.gameManager.soundManager;
-        multishotCs[i].GetComponent<AudioSource>().PlayOneShot(gameManager.soundManager.powerupAppear);
+        multishotCs[i].GetComponent<AudioSource>().PlayOneShot(soundManager.powerupAppearClip);
         return;
       }
     }

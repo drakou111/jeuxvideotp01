@@ -4,26 +4,20 @@ using UnityEngine;
 
 public class HealthCollectible : MonoBehaviour
 {
-  [SerializeField] private int healthAmount = 3;
-  private AudioSource source;
-  public SoundManager soundManager;
-  void Start()
-  {
-    source = gameObject.GetComponent<AudioSource>();
-  }
-
-  void Update()
-  {
-
-  }
+  [SerializeField] private int healthAmount = 2;
+  private SoundManager soundManager;
 
   private void OnTriggerEnter(Collider collidier)
   {
     if (collidier.gameObject.CompareTag("Player"))
     {
       collidier.gameObject.GetComponent<Player>().heal(healthAmount);
-      //source.PlayOneShot(soundManager.powerupPickup);
+      soundManager.playCollectibleSound(transform.position);
       gameObject.SetActive(false);
     }
+  }
+  public void setSoundManager(SoundManager sM)
+  {
+    soundManager = sM;
   }
 }

@@ -2630,7 +2630,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7198602683646946317}
   - component: {fileID: -1646467134391872560}
-  - component: {fileID: 7644293467853208721}
+  - component: {fileID: 8764382733058530547}
+  - component: {fileID: 6860710623484353233}
+  - component: {fileID: 4261569606341928641}
+  - component: {fileID: 5813168906063689969}
+  - component: {fileID: 636225741359532852}
   m_Layer: 0
   m_Name: SpaceMarine
   m_TagString: Player
@@ -2678,7 +2682,82 @@ CapsuleCollider:
   m_Height: 11
   m_Direction: 1
   m_Center: {x: 0, y: 5.5, z: 0}
---- !u!82 &7644293467853208721
+--- !u!114 &8764382733058530547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4890595402546638730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b6a99530128aee40a69ad98a5e92927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 20
+  mainCam: {fileID: 0}
+  gravity: 100
+  jumpSpeed: 40
+--- !u!114 &6860710623484353233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4890595402546638730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89b92025a5179794abe071f058d43cc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 0}
+  playerShooting: {fileID: 4261569606341928641}
+  graceCooldown: 1
+--- !u!114 &4261569606341928641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4890595402546638730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06059da46a0b73c459f88fc7a1c64e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 9106597129761083039, guid: 4e54a533cf6dea74ab9c118b0f887d4e, type: 3}
+  missile: {fileID: 2525046337550401708, guid: 1e98e7d446211fbbba881ed3504f9d68, type: 3}
+  gun: {fileID: 5923833862400554645}
+  gameManager: {fileID: 0}
+  shootCooldown: 0.1
+  multiShotAngleOffset: 10
+--- !u!143 &5813168906063689969
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4890595402546638730}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!82 &636225741359532852
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2689,7 +2768,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

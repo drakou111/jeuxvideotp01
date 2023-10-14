@@ -8,20 +8,11 @@ public class Alien : MonoBehaviour
   [SerializeField] int initialHealth = 2;
   [SerializeField] int health = 2;
   [SerializeField] int enemyDamage = 1;
-  [SerializeField] public CollectibleManager collectibleManager;
-  [SerializeField] public SpawnerManager spawnManager;
+  [SerializeField] private CollectibleManager collectibleManager;
+  [SerializeField] private SpawnerManager spawnManager;
+  [SerializeField] private SoundManager soundManager;
   [SerializeField] private const float crushVelocityThreshold = -1;
-  private AudioSource source;
 
-  // Start is called before the first frame update
-  void Start()
-  {
-    this.source = GetComponent<AudioSource>();
-  }
-
-  private void OnEnable()
-  {
-  }
 
   private void OnCollisionEnter(Collision collision)
   {
@@ -52,11 +43,11 @@ public class Alien : MonoBehaviour
 
   public void deactivate()
   {
+    soundManager.playAlienDeathSound(transform.position);
     this.health = this.initialHealth;
     gameObject.SetActive(false);
     if (collectibleManager)
     {
-      //source.PlayOneShot(collectibleManager.gameManager.soundManager.alienDeath);
       collectibleManager.trySpawnCollectible(transform.position);
     }
   }
@@ -68,5 +59,20 @@ public class Alien : MonoBehaviour
     {
       deactivate();
     }
+  }
+
+  public void setCollectibleManager(CollectibleManager cM)
+  {
+    collectibleManager = cM;
+  }
+
+  public void setSpawnManager(SpawnerManager sM)
+  {
+    spawnManager = sM;
+  }
+
+  public void setSoundManager(SoundManager sM)
+  {
+    soundManager = sM;
   }
 }
