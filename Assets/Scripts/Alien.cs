@@ -5,61 +5,68 @@ using UnityEngine.Events;
 
 public class Alien : MonoBehaviour
 {
-    [SerializeField] private const float crushVelocityThreshold = -1;
-    [SerializeField] int initialHealth = 2;
-    [SerializeField] int health = 2;
-    [SerializeField] int damage = 1;
+  [SerializeField] int initialHealth = 2;
+  [SerializeField] int health = 2;
+  [SerializeField] int enemyDamage = 1;
+  [SerializeField] public CollectibleManager collectibleManager;
+  [SerializeField] public SpawnerManager spawnManager;
+  [SerializeField] private const float crushVelocityThreshold = -1;
+  private AudioSource source;
 
-    [SerializeField] public CollectibleManager collectibleManager;
-    private AudioSource source;
+  // Start is called before the first frame update
+  void Start()
+  {
+    this.source = GetComponent<AudioSource>();
+  }
 
-    // Start is called before the first frame update
-    void Start()
+  private void OnEnable()
+  {
+  }
+
+  private void OnCollisionEnter(Collision collision)
+  {
+    if (collision.gameObject.CompareTag("Player"))
     {
-       this.source = GetComponent<AudioSource>();
+      if (collision.gameObject.GetComponent<CharacterController>().velocity.y >= crushVelocityThreshold)
+      {
+        collision.gameObject.GetComponent<Player>().hit(enemyDamage);
+      }
+      deactivate();
     }
-
-    private void OnCollisionEnter(Collision collision)
+    if (collision.gameObject.CompareTag("Bullet"))
     {
-
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            this.health = 0;
-            if (collision.gameObject.GetComponent<Rigidbody>().velocity.y >= crushVelocityThreshold)
-            {
-                collision.gameObject.GetComponent<Player>().hit(damage);
-            }
-            deactivateIfDead();
-        }
-
-        if (collision.gameObject.CompareTag("Bullet"))
-        {
-            int damage = collision.gameObject.GetComponent<Bullet>().getDamage();
-            hit(damage);
-            //TODO: disable bullet
-        }
+      int damage = collision.gameObject.GetComponent<Bullet>().getDamage();
+      collision.gameObject.SetActive(false);
+      hit(damage);
     }
-    // Update is called once per frame
-    void Update()
+    if (collision.gameObject.CompareTag("Missile"))
     {
+      collision.gameObject.SetActive(false);
+      spawnManager.checkExplosion(transform.position);
+      deactivate();
     }
+  }
+  void Update()
+  {
+  }
 
-    void deactivateIfDead() {
-        if (this.health <= 0 && gameObject.activeSelf)
-        {
-            this.health = this.initialHealth;
-            gameObject.SetActive(false);
-            if (collectibleManager)
-            {
-                source.PlayOneShot(collectibleManager.gameManager.soundManager.alienDeath);
-                collectibleManager.trySpawnCollectible(transform.position);
-            }
-        }
-    }
-
-    void hit(int health)
+  public void deactivate()
+  {
+    this.health = this.initialHealth;
+    gameObject.SetActive(false);
+    if (collectibleManager)
     {
-        this.health -= health;
-        deactivateIfDead();
+      //source.PlayOneShot(collectibleManager.gameManager.soundManager.alienDeath);
+      collectibleManager.trySpawnCollectible(transform.position);
     }
+  }
+
+  void hit(int damage)
+  {
+    this.health -= damage;
+    if (this.health <= 0 && gameObject.activeSelf)
+    {
+      deactivate();
+    }
+  }
 }

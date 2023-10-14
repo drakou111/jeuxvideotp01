@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -9022007371863103093}
   m_Layer: 0
   m_Name: MissileCollectible
-  m_TagString: Untagged
+  m_TagString: MissileCollectible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missileAmount: 5
+  soundManager: {fileID: 0}
 --- !u!114 &8117276690947937187
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,26 +4,27 @@ using UnityEngine;
 
 public class MultiShotCollectible : MonoBehaviour
 {
-    [SerializeField] private int multiShotAmount = 10;
-    private AudioSource source;
-    public SoundManager soundManager;
-    void Start()
-    {
-        source = gameObject.GetComponent<AudioSource>();
-    }
+  [SerializeField] private float multiShotAmount = 10.0f;
+  [SerializeField] PlayerShooting player;
+  private AudioSource source;
+  public SoundManager soundManager;
+  void Start()
+  {
+    source = gameObject.GetComponent<AudioSource>();
+  }
 
-    void Update()
-    {
+  void Update()
+  {
 
-    }
+  }
 
-    private void OnTriggerEnter(Collider collidier)
+  private void OnTriggerEnter(Collider collidier)
+  {
+    if (collidier.gameObject.CompareTag("Player"))
     {
-        if (collidier.gameObject.CompareTag("Player"))
-        {
-            collidier.gameObject.GetComponent<Player>().addMultiShot(multiShotAmount);
-            source.PlayOneShot(soundManager.powerupPickup);
-            gameObject.SetActive(false);
-        }
+      collidier.gameObject.GetComponent<PlayerShooting>().addMultiShot(multiShotAmount);
+      //source.PlayOneShot(soundManager.powerupPickup);
+      gameObject.SetActive(false);
     }
+  }
 }

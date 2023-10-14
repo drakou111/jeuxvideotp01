@@ -9,7 +9,7 @@ using Input = UnityEngine.Input;
 public class PlayerMovement : MonoBehaviour
 {
   [SerializeField] private float speed = 5f;
-  [SerializeField] private Transform camera;
+  [SerializeField] private Transform mainCam;
 
   private CharacterController characterController;
   private Vector3 direction;
@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
 
     if (direction.magnitude >= 0.1f)
     {
-      targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + camera.eulerAngles.y;
+      targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + mainCam.eulerAngles.y;
 
       angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref rotationSpeed, rotationTime);
 

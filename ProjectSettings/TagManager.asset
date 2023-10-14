@@ -8,6 +8,10 @@ TagManager:
   - Bullet
   - Wall
   - Floor
+  - HealthCollectible
+  - MissileCollectible
+  - MultiShotCollectible
+  - Missile
   layers:
   - Default
   - TransparentFX

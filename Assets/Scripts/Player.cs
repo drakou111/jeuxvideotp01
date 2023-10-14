@@ -5,23 +5,29 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
   [SerializeField] private GameManager manager;
-  [SerializeField] float speed = 20;
+  [SerializeField] private PlayerShooting playerShooting;
 
-  // Start is called before the first frame update
-  void Start()
-  {
+  [SerializeField] float graceCooldown;
+  private float graceTimer;
+  private bool grace = false;
 
-  }
+  [SerializeField] int healthPickupHeal = 1;
 
-  // Update is called once per frame
   void Update()
   {
-
+    graceTimer = Time.deltaTime;
+    if (graceTimer >= graceCooldown)
+    {
+      grace = false;
+    }
   }
 
-  public void hit(int health)
+  public void hit(int damage)
   {
-    manager.hit(health);
+    if (!grace)
+    {
+      manager.hit(damage);
+    }
   }
 
   public void heal(int health)
@@ -29,14 +35,17 @@ public class Player : MonoBehaviour
     manager.heal(health);
   }
 
-  public void addMissile(int amount)
+  public void addMissiles(int amount)
   {
-    manager.addMissile(amount);
+    manager.addMissiles(amount);
+    playerShooting.addMissiles(amount);
   }
 
-  public void addMultiShot(int amount)
+  public void addMultiShot(float amount)
   {
     manager.addMultiShot(amount);
+    playerShooting.addMultiShot(amount);
   }
+
 
 }

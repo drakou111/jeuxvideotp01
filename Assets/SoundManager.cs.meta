@@ -3,7 +3,20 @@ guid: d2174e9c892daaf498598e73dcd97b48
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - alienDeath: {fileID: 8300000, guid: 8f252cb39a2a2da44aefd3d09599af53, type: 3}
+  - elevator: {fileID: 8300000, guid: 2f387366f0fba044487680bf853f5f68, type: 3}
+  - marineDeath: {fileID: 8300000, guid: d9f613ad6fc2e5648b734dade33baf01, type: 3}
+  - marineDeath2: {fileID: 8300000, guid: 1193e54acba550146a728d79cdc0cb55, type: 3}
+  - marineHurt: {fileID: 8300000, guid: a16b9017a7a3b744fbd8ab26d0a816c3, type: 3}
+  - missileShot: {fileID: 8300000, guid: a188fcd57b842ae42b8591b1a666c90f, type: 3}
+  - music: {fileID: 8300000, guid: c913da143d1341c4a8ca22e0717e79a2, type: 3}
+  - music2: {fileID: 8300000, guid: 390d1e401d456db4e8923d60a357e309, type: 3}
+  - powerupAppear: {fileID: 8300000, guid: 00f25f135ee488c4591479876ca3f10c, type: 3}
+  - powerupPickup: {fileID: 8300000, guid: 55bc10006917fbe46a89f70a93cd4e1f, type: 3}
+  - shoot: {fileID: 8300000, guid: 5601eca1dfa29004bb6fa92fb60c7feb, type: 3}
+  - tripleShoot: {fileID: 8300000, guid: 8e48e9181723f0c4c9c881d2bfc0fa03, type: 3}
+  - victory: {fileID: 8300000, guid: b4d3cb20c25bae54e999c556d56876b8, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
