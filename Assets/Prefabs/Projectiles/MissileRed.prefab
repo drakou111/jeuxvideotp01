@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 8027253185720472673}
   - component: {fileID: 4106151635539143875}
   - component: {fileID: 280434400047993643}
+  - component: {fileID: 9145310534459746286}
   m_Layer: 0
   m_Name: MissileRed
-  m_TagString: Untagged
+  m_TagString: Missile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,6 +85,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!114 &9145310534459746286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2525046337550401708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02182a96469d65148bf765170e6be2d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  speed: 50
+  bulletCooldown: 6
 --- !u!1 &5755948023374679887
 GameObject:
   m_ObjectHideFlags: 0
