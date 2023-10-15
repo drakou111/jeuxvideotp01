@@ -1,10 +1,5 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.Windows;
 using Input = UnityEngine.Input;
 
 public class PlayerShooting : MonoBehaviour
@@ -62,8 +57,9 @@ public class PlayerShooting : MonoBehaviour
         }
         else if ((!joystickConnected && Input.GetButton("Fire2")) || (joystickConnected && Input.GetAxis("Fire2J") > .5))
         {
-            if (gameManager.missiles != 0)
+            if (shootTimer >= shootCooldown && gameManager.missiles != 0)
             {
+                shootTimer = 0;
                 gameManager.addMissiles(-1);
                 ShootMissile();
             }
