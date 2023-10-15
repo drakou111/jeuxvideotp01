@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-  [SerializeField] private GameManager manager;
+  [SerializeField] public GameManager manager;
   [SerializeField] private SoundManager soundManager;
 
   [SerializeField] private PlayerShooting playerShooting;

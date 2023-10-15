@@ -75,7 +75,7 @@ public class SoundManager : MonoBehaviour
   }
 
   public static IEnumerator FadeOut(AudioSource audioSource, float FadeTime, AudioClip nextClip)
-  {//Volé d'un forum Unity >:)
+  {
     float startVolume = audioSource.volume;
 
     while (audioSource.volume > 0)

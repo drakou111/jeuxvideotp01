@@ -19,11 +19,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float gravity = 9.81f;
     [SerializeField] private float jumpSpeed = 6f;
     private float vecticalMovement = 0f;
+    private GameManager manager;
 
     float horizontal, vertical, targetAngle, angle, tempSpeed, originalMovementMagnitude;
 
     private void Start()
     {
+        this.manager = GetComponent<Player>().manager;
         characterController = GetComponent<CharacterController>();
     }
 
@@ -38,7 +40,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void BuildSurfaceMovement()
     {
-        if (Input.GetJoystickNames().Length == 0 || Input.GetJoystickNames()[0] == "")
+        bool joystickConnected = manager.isJoystickConnected();
+        if (!joystickConnected)
         {
             horizontal = Input.GetAxis("Horizontal");
             vertical = Input.GetAxis("Vertical");
@@ -76,10 +79,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void BuildVerticalMovement()
     {
+        bool joystickConnected = manager.isJoystickConnected();
+
         if (!characterController.isGrounded)
             vecticalMovement -= gravity * Time.deltaTime;
 
-        if (((Input.GetJoystickNames().Length == 0 || Input.GetJoystickNames()[0] == "") && Input.GetButtonDown("Jump")) || Input.GetJoystickNames().Length > 0 && Input.GetButtonDown("JumpJ")) {
+        if ((!joystickConnected && Input.GetButtonDown("Jump")) || (joystickConnected && Input.GetButtonDown("JumpJ"))) {
             if (characterController.isGrounded)
                 vecticalMovement = jumpSpeed;
         }
